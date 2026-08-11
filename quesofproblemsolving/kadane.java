@@ -13,7 +13,7 @@ public class kadane {
         return maxsum;
     }
     public static void main(){
-        int arr [] = {5,4,-1,7,8};
+        int arr [] = {-2,1,-3,4,-1,2,1,-5,4};
         int result = maxsubArray(arr);
         System.out.println(result);
     }
