@@ -1,6 +1,6 @@
 package leetcode;
 
-public class painters {
+class painters {
 
     static boolean isValidSolution(int boards[] , int k ,int mid){
         int paintercount = 1;
@@ -38,7 +38,7 @@ public class painters {
         while(s<=e){
             int mid = s + (e-s)/2;
 
-            if(isValidSolution(mid,k,boards)){
+            if(isValidSolution(boards,k,mid)){
                 ans = mid;
                 e = mid-1;
             }
