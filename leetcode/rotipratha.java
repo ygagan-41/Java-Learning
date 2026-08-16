@@ -5,7 +5,37 @@ public class rotipratha {
     //roti-paratha problem
     static boolean isValidAns(int totalparathas , int cooks[] , int totalcooks , int timelimit){
         
-        int 
+        int parathascount = 0;
+        //ab ek ek karke har loop pe jayege
+
+        for(int i = 0; i<cooks.length ; i++){
+            int currentcookrank = cooks[i];
+            int timetaken = 0;
+            int j =1;
+            //current cook ki rank hai r 
+            //1*r , 2*r , 3*r , 4*r
+            //cook karna start karo
+            while(timetaken <= timelimit){
+
+                if(timetaken + j*currentcookrank <=timelimit){
+                        //iska matlab hai paratha ban sakta hain
+                        timetaken = timetaken + j*currentcookrank;
+                        parathascount++;
+                        j++;
+                }
+                else{
+                    //iska matlab hai paratha time limit ke andar nhi ban sakta hai
+                    break;
+                }
+            }
+            //jab ye loop khtam hota hai , toh ye ith cook jitne paratha bana skta tha , unko total pratha count me add kar chuka hota hai
+        }
+            if(parathascount>=totalparathas){
+                return true;
+            }
+            else{
+                return false;
+            }
     }
 
     public int mintimetocookparathas(int p , int[]cook , int n ){
