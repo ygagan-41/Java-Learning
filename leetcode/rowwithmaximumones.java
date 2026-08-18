@@ -6,7 +6,6 @@ public class rowwithmaximumones {
 
         int totalrow = mat.length;
         int totalcolumn = mat[0].length;
-        int target = 1;
         int ans = -1;
         
         //handling case where there is no one inside the row
