@@ -1,3 +1,5 @@
+package leetcode;
+
 class coinchange {
     static int solve(int[] coins , int amount){
 
