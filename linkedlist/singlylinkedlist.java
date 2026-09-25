@@ -102,5 +102,225 @@ public class singlylinkedlist {
     }
 
     //Traversal
-    
+    public void printlist(){
+        node temp = head;
+        while(temp!= null){
+            System.out.println(temp);
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+
+    //utility functions
+
+    //for empty
+    public boolean isempty(){
+        return head == null;
+    }
+
+    //for size
+    public int getsize(){
+        return size;
+    }
+
+    //to get head
+    public int gethead(){
+        if(head == null){
+            return -1;
+        }
+        else{
+            return head.data;
+        }
+    }
+
+    //to get tail
+    public int gettail(){
+        if(tail == null){
+            return -1;
+        }
+        else{
+            return tail.data;
+        }
+    }
+
+    //searching
+    //return true if value exists
+    public boolean search(int target){
+        node temp = head;
+
+        while(temp != null){
+            if(temp.data == target){
+                return true;
+            }
+            else{
+                temp=temp.next;
+            }
+        }
+        return false;
+    }
+
+    //find positions
+    public int findpositions(int target){
+        node temp = head;
+        int position = 1;
+        while(temp != null){
+            if(temp.data == target){
+                return position;
+            }
+            else{
+                temp = temp.next;
+                position++;
+            }
+        }
+        return -1;
+    }
+
+    //update using positions
+
+    public void updateposition(int position , int newdata){
+        node temp = head;
+
+        for(int i=1; i<=position ; i++){
+            temp = temp.next;
+        }
+        temp.data = newdata;
+    }
+
+    //update first occurence of value
+    public boolean updatevalue(int oldval , int newval){
+        node temp =head;
+        while(temp !=null){
+            if(temp.data == oldval){
+                temp.data = newval;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+
+    //deletion
+    //delete at head
+    public void deletehead(){
+        if(head == null){
+            System.out.println("list is empty");
+            return;
+        }
+        head = head.next;
+        size--;
+
+        if(head == null){
+            tail =null;
+        }
+    }
+
+    //delete at node
+    public void deletetail(){
+        if(head == null){
+            return ;
+        }
+        if(head == tail){
+            head = null;
+            tail = null;
+            size = 0;
+            return;
+        }
+        node temp =head;
+        for(int i=0 ; i<size-2 ; i++){
+            temp = temp.next;
+        }
+        temp.next = null;
+        tail = temp;
+        size--;
+    }
+
+    //delete at position
+
+    public void deleteatposition(int position){
+        if(position<1 || position>size+1){
+            System.out.println("list is empty");
+            return;
+        }
+        if(position == 1){
+            deletehead();
+            return;
+        }
+        if(position == size){
+            deletetail();
+            return;
+        }
+
+        node prev = head;
+        for(int i = 1; i<=position-2; i++){
+            prev = prev.next;
+        }
+        node curr = prev.next;
+        node forward = curr.next;
+
+        prev.next = forward;
+        curr.next = null;
+
+        size--;
+    }
+
+    //delete first occurence of value
+
+    public boolean deletevalue(int target){
+        if(head == null){
+            return false;
+        }
+        if(head.data == target){
+            deletehead();
+            return true;
+        }
+        node prev = head;
+        node curr = head.next;
+
+        while(curr != null){
+            if(curr.data == target){
+                node forward = curr.next;
+                prev.next = forward;
+                curr.next = null;
+                if(tail == curr){
+                    tail = prev;
+                }
+                  size--;
+                  return true;
+            }
+            else{
+                prev = prev.next;
+                curr = curr.next;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        singlylinkedlist mylist = new singlylinkedlist();
+
+        if(mylist.isempty()){
+            System.out.println("list is empty");
+        }
+        System.out.println("size:" + mylist.getsize());
+
+        //insert at head
+        mylist.insertAthead(10);
+     
+
+        //insert at tail
+        mylist.insertattail(50);
+      
+
+        //insert at position
+        mylist.insertatposition(2, 30);
+
+        mylist.deletehead();
+        
+
+        System.out.println(mylist.gethead());
+        System.out.println(mylist.gettail());
+        System.out.println(mylist.search(200));
+        System.out.println(mylist.findpositions(10));
+
+        mylist.updateposition(1, 200);
+    }
 }
