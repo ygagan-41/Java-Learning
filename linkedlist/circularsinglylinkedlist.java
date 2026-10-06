@@ -1,7 +1,5 @@
 package linkedlist;
 
-import linkedlist.singlylinkedlist.node;
-
 public class circularsinglylinkedlist {
     static class Node {
         int data;
