@@ -1,5 +1,3 @@
-package linkedlist;
-
 public class doublylinkedlist {
     
     static class Node{

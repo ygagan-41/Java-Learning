@@ -1,5 +1,3 @@
-package linkedlist;
-
 public class circulardoublylinkedlist {
     static class Node {
         int data;

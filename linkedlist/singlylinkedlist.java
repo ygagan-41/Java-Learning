@@ -1,5 +1,3 @@
-package linkedlist;
-
 //singlylinkedlist naam ki ek class banayi hai jiske andar hamari ll hai
 public class singlylinkedlist {
     
